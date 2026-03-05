@@ -1,7 +1,7 @@
 //let Buttons = []
 let NumbersLabels = ["7","8","9","4","5","6","1","2","3","0"]; //digits labels
 
-let OpLabels = ["+","-","x","/","="];//operators labels
+let OpLabels = ["+","-","*","/","="];//operators labels
 
 let Px ; //position in x used for placing the buttons
 let Py ;//position in y used for placing the buttons
@@ -26,21 +26,9 @@ function setup() {
   let CButton = createButton("C")
   ApplyStyle(CButton)
   CButton.position(25,125)
-  CButton.mousePressed(OnClickC)
-
-
-
-  
-  
-  
-  
-  
-  
+  CButton.mousePressed(OnClickC)  
 }
 
-function draw() {
-  
-}
 
 
 function ApplyStyle(button)
@@ -145,7 +133,7 @@ function OnClickOp()
 
 function OnClickEqual()
 {
-  Screen.elt.value = eval(Content)
+  Screen.elt.value = Calcul(Content)//eval(Content)
 
 }
 
@@ -166,3 +154,12 @@ function RefreshScreen()
   
 }
 
+
+function Calcul(input)
+{
+  if(input.includes("/0"))
+  {
+    return("Division by 0 !")
+  }
+  return eval(input)
+}
