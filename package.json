@@ -1,0 +1,23 @@
+{
+  "name": "swe-testing-assignment",
+  "version": "1.0.0",
+  "description": "Description of the project - QuickCalc",
+  "main": "calcul.test.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HackTimel/swe-testing-assignment.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HackTimel/swe-testing-assignment/issues"
+  },
+  "homepage": "https://github.com/HackTimel/swe-testing-assignment#readme",
+  "devDependencies": {
+    "jest": "^30.2.0"
+  }
+}

@@ -1,5 +1,5 @@
 //let Buttons = []
-let NumbersLabels = ["7","8","9","4","5","6","1","2","3","0"]; //digits labels
+let NumbersLabels = ["7","8","9","4","5","6","1","2","3","0","."]; //digits labels
 
 let OpLabels = ["+","-","*","/","="];//operators labels
 
@@ -161,4 +161,9 @@ function Calcul(input)
   {
   return eval(input) //else return the result
   }
+}
+
+// Allow to export the Calcul for the unit tests
+if (typeof module !== 'undefined') {
+  module.exports = Calcul;
 }
