@@ -1,2 +1,1 @@
-# swe-testing-assignment
-Quick-Calc exercise for applied system software course at RTU
+This project consist of a basic calculator and tests
