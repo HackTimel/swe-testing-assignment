@@ -9,29 +9,30 @@ let Content = "0"; //Content to display on the screen
 let Screen; //text area to display the Content
 
 
-
-
-
 function setup() {
   createCanvas(325, 500);
   PlaceNumbers();
   PlaceOp()
   background("lightblue");
-  Screen = createElement('textarea');
-  Screen.style('text-align', 'right');
-  Screen.position(25,25)
-  Screen.size(270,60)
-  Screen.style('font-size', '30px');
-  Screen.elt.value = "0"
-  let CButton = createButton("C")
+  PlaceTextArea() //creation and placement of the text area
+  
+  let CButton = createButton("C")//creation of the C button, dosen't need an entire function
   ApplyStyle(CButton)
   CButton.position(25,125)
   CButton.mousePressed(OnClickC)  
 }
 
 
-
-function ApplyStyle(button)
+function PlaceTextArea()
+{
+  Screen = createElement('textarea');
+  Screen.style('text-align', 'right');
+  Screen.position(25,25)
+  Screen.size(270,60)
+  Screen.style('font-size', '30px');
+  Screen.elt.value = "0"
+}
+function ApplyStyle(button)//style of the differents buttons
 {
   button.style("color", "darkred");
   button.size(50,50);
@@ -92,8 +93,6 @@ function PlaceOp()
       Py+=75
       
     }
-  
-  
 }
 
 function OnClickNb()
@@ -137,7 +136,7 @@ function OnClickEqual()
 
 }
 
-function OnClickC()
+function OnClickC() //the C button reset the Content to display
 {
   Content = 0
 
@@ -149,17 +148,17 @@ function RefreshScreen()
 {
   
   Screen.elt.value = Content
-  
-  
-  
+    
 }
-
 
 function Calcul(input)
 {
   if(input.includes("/0"))
   {
-    return("Division by 0 !")
+    return("Division by 0 !") //Division by 0 case
   }
-  return eval(input)
+  else
+  {
+  return eval(input) //else return the result
+  }
 }
