@@ -1,7 +1,7 @@
-let Buttons = []
+//let Buttons = []
 let NumbersLabels = ["7","8","9","4","5","6","1","2","3","0"]; //digits labels
 
-let OpLabels = ["+","-","x","/"];//operators labels
+let OpLabels = ["+","-","x","/","="];//operators labels
 
 let Px ;
 let Py ;
@@ -23,6 +23,12 @@ Screen.style('text-align', 'right');
   Screen.size(270,60)
   Screen.style('font-size', '30px');
   Screen.elt.value = "0"
+  let CButton = createButton("C")
+  ApplyStyle(CButton)
+  CButton.position(25,125)
+  CButton.mousePressed(OnClickC)
+
+
 
   
   
@@ -57,7 +63,7 @@ function PlaceNumbers()
   for(let i = 0;i<NumbersLabels.length;i++)
     {
       let tmp = createButton(NumbersLabels[i]);
-      Buttons.push(tmp)
+      //Buttons.push(tmp)
       tmp.position(Px,Py);
       ApplyStyle(tmp);
       tmp.mousePressed(OnClickNb)
@@ -85,10 +91,17 @@ function PlaceOp()
   for(let i = 0;i<OpLabels.length;i++)
     {
       let tmp = createButton(OpLabels[i]);
-      Buttons.push(tmp)
+      //Buttons.push(tmp)
       tmp.position(Px,Py);
       ApplyStyle(tmp);
+      if(OpLabels[i]!="=")
+      {
       tmp.mousePressed(OnClickOp)
+      }
+      else
+      {
+        tmp.mousePressed(OnClickEqual)
+      }
       Py+=75
       
     }
@@ -124,10 +137,22 @@ function OnClickOp()
 } 
   
 
+function OnClickEqual()
+{
+
+}
+
+function OnClickC()
+{
+  Content = 0
+  CurrentNumber = 0
+  RefreshScreen()
+}
+
 
 function RefreshScreen()
 {
-  background("lightblue")
+  
   Screen.elt.value = Content
   
   
