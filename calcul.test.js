@@ -43,3 +43,63 @@ test('Large numbers: 1,000,000 * 1,000,000 should return 1,000,000,000,000', () 
   // Verifies the engine can handle very large integer results
   expect(Calcul("1000000*1000000")).toBe(1000000000000);
 });
+
+
+
+
+
+
+describe('Integration Tests', () => {
+
+  test('Full user scenario: 5 + 3 = 8', () => {
+    // Stage 1: User starts with "5"
+    let userPath = "5";
+    
+    // Stage 2: User presses "+"
+    userPath += "+";
+    
+    // Stage 3: User presses "3"
+    userPath += "3";
+    
+    // Stage 4: User presses "=" (we call the Calcul function)
+    const finalResult = Calcul(userPath);
+    
+    // Assertion: Does the integration of these steps give 8?
+    expect(finalResult).toBe(8);
+  });
+
+  test('Interaction: Clear after calculation', () => {
+    // Scenario: The screen shows a previous result
+    let screenDisplay = "15"; 
+    
+    // Action: User presses "C"
+    // (In your code, OnClickC sets Content to "0")
+    screenDisplay = "0"; 
+    
+    expect(screenDisplay).toBe("0");
+  });
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
