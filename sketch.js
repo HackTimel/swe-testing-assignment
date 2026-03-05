@@ -3,12 +3,12 @@ let NumbersLabels = ["7","8","9","4","5","6","1","2","3","0"]; //digits labels
 
 let OpLabels = ["+","-","x","/","="];//operators labels
 
-let Px ;
-let Py ;
-let Content = "0";
-let Screen;
-let CurrentNumber = 0;
-let nextOp;
+let Px ; //position in x used for placing the buttons
+let Py ;//position in y used for placing the buttons
+let Content = "0"; //Content to display on the screen
+let Screen; //text area to display the Content
+
+
 
 
 
@@ -18,7 +18,7 @@ function setup() {
   PlaceOp()
   background("lightblue");
   Screen = createElement('textarea');
-Screen.style('text-align', 'right');
+  Screen.style('text-align', 'right');
   Screen.position(25,25)
   Screen.size(270,60)
   Screen.style('font-size', '30px');
@@ -63,7 +63,6 @@ function PlaceNumbers()
   for(let i = 0;i<NumbersLabels.length;i++)
     {
       let tmp = createButton(NumbersLabels[i]);
-      //Buttons.push(tmp)
       tmp.position(Px,Py);
       ApplyStyle(tmp);
       tmp.mousePressed(OnClickNb)
@@ -91,7 +90,7 @@ function PlaceOp()
   for(let i = 0;i<OpLabels.length;i++)
     {
       let tmp = createButton(OpLabels[i]);
-      //Buttons.push(tmp)
+
       tmp.position(Px,Py);
       ApplyStyle(tmp);
       if(OpLabels[i]!="=")
@@ -114,15 +113,13 @@ function OnClickNb()
   if(Content == "0")
     {
     Content=this.html()
-    CurrentNumber = parseInt(Content)
+    
     
     }
     else
       {
     Content+=this.html()
-        CurrentNumber*=10
-        CurrentNumber+=parseInt(this.html())
-        console.log(CurrentNumber)
+        
       }
         RefreshScreen()
   
@@ -131,21 +128,31 @@ function OnClickNb()
 function OnClickOp()
 {
 
-  Content+=this.html()
-  nextOp = this.html()
+  if(Content == "0")
+  {
+    Content = this.html()
+  }
+  else
+  {
+    Content+=this.html()
+  }
+
+  
+  
   RefreshScreen()
 } 
   
 
 function OnClickEqual()
 {
+  Screen.elt.value = eval(Content)
 
 }
 
 function OnClickC()
 {
   Content = 0
-  CurrentNumber = 0
+
   RefreshScreen()
 }
 
